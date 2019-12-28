@@ -1,0 +1,74 @@
+# Feel Free to modify these test cases for your own testing. 
+javac WordSearcher.java
+
+echo "Forward Search Test"
+java WordSearcher TEST,SAMPLE,OUTPUT TESTOUTPUT > outTemp.test
+echo  "TEST" > outSolTemp.test
+echo "OUTPUT" >> outSolTemp.test
+
+sort -o outSol.test outSolTemp.test
+sort -o out.test outTemp.test
+
+git diff outSol.test out.test
+
+if [ $? -lt 1 ]
+then
+    echo "Passed."
+   
+else 
+    echo "Failed."   
+fi
+
+echo "Reverse Search Test"
+java WordSearcher TEST,SAMPLE,OUTPUT TUPTUOELPMAS > outTemp.test
+echo  "SAMPLE" > outSolTemp.test
+echo "OUTPUT" >> outSolTemp.test
+
+sort -o outSol.test outSolTemp.test
+sort -o out.test outTemp.test
+
+git diff outSol.test out.test
+
+if [ $? -lt 1 ]
+then
+    echo "Passed."
+   
+else 
+    echo "Failed."   
+fi
+
+echo "Forward Dispersed Search Test"
+java WordSearcher TEST,SAMPLE,OUTPUT XXSXXAXXMXXPXXLXXEXX > outTemp.test
+echo  "SAMPLE" > outSolTemp.test
+
+sort -o outSol.test outSolTemp.test
+sort -o out.test outTemp.test
+
+git diff outSol.test out.test
+
+if [ $? -lt 1 ]
+then
+    echo "Passed."
+   
+else 
+    echo "Failed."   
+fi
+
+echo "Reverse Dispersed Search Test"
+java WordSearcher TEST,SAMPLE,OUTPUT XXTXXUXXPTXXUXXOXX > outTemp.test
+echo  "OUTPUT" > outSolTemp.test
+
+sort -o outSol.test outSolTemp.test
+sort -o out.test outTemp.test
+
+git diff outSol.test out.test
+
+if [ $? -lt 1 ]
+then
+    echo "Passed."
+   
+else 
+    echo "Failed."   
+fi
+        
+rm -f *.test temp 
